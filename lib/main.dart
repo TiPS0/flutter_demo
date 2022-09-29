@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants.dart';
-import 'package:flutter_demo/screens/home/home_screen.dart';
+import 'package:flutter_demo/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: backgroundColor,
         // fontFamily: "",
       ),
-      home: const HomeScreen(),
+      home: const Splash(),
     );
   }
 }

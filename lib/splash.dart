@@ -2,7 +2,8 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/screens/home/home.dart';
+import 'package:flutter_demo/constants.dart';
+import 'package:flutter_demo/screens/home/home_screen.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -17,14 +18,14 @@ class _SplashState extends State<Splash> {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const Home()));
+          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 111, 238, 255),
+      backgroundColor: backgroundColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

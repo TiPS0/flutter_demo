@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants.dart';
+import 'package:flutter_demo/models/Product.dart';
+import 'package:flutter_demo/screens/home/components/item_card.dart';
+
+import 'categories.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -20,58 +24,21 @@ class Body extends StatelessWidget {
           ),
         ),
         const Categories(),
-      ],
-    );
-  }
-}
-
-class Categories extends StatefulWidget {
-  const Categories({super.key});
-
-  @override
-  State<Categories> createState() => _CategoriesState();
-}
-
-class _CategoriesState extends State<Categories> {
-  List<String> categories = [
-    "AAAAAAAAAA",
-    "BBBBBBBBBB",
-    "CCCCCCCCCC",
-    "DDDDDDDDDD"
-  ];
-  int selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 25,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) => buildCategory(index),
-      ),
-    );
-  }
-
-  Widget buildCategory(int index) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            categories[index],
-            style:
-                const TextStyle(fontWeight: FontWeight.bold, color: textColor),
+        Expanded(
+            child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+          child: GridView.builder(
+            itemCount: products.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 0.75,
+              mainAxisSpacing: defaultPadding,
+              crossAxisSpacing: defaultPadding,
+            ),
+            itemBuilder: (context, index) => ItemCard(product: products[index]),
           ),
-          Container(
-            margin: const EdgeInsets.only(top: defaultPadding / 4),
-            height: 2,
-            width: 30,
-            color: Colors.black,
-          )
-        ],
-      ),
+        ))
+      ],
     );
   }
 }
